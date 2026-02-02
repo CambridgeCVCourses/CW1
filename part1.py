@@ -51,7 +51,7 @@ for method_name in feature_extractors.keys():
     )
     plot_losses(losses, method_name)
 
-# Evaluate linear probes on photo_val
+# Evaluate linear probes on photo_val (implement evaluate_linear from scratch)
 for method_name, probe in linear_probes.items():
     val_feats = FeaturesDataset.create("photo_val", feature_extractors[method_name], device=device)
     acc = evaluate_linear(probe, val_feats, device=device)
@@ -69,7 +69,7 @@ for method_name, fx in feature_extractors.items():
     )
     plot_losses(ft_losses, f"{method_name}_finetune")
 
-# Evaluate finetuned models on photo_val
+# Evaluate finetuned models on photo_val (implement evaluate_finetune from scratch)
 for method_name, fx in feature_extractors.items():
     print(f"Evaluating {method_name} finetuned model...")
     acc = evaluate_finetune(finetuned_models[method_name], "photo_val", fx, device=device)
